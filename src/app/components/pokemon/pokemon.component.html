@@ -1,3 +1,22 @@
-<p>
-  pokemon works!
-</p>
+<div *ngIf="pokemon!=null">
+  <div class="card">
+    <img class="card-img-top" [src]="pokemon.img" [alt]="pokemon.name">
+    <div class="card-block">
+      <h4 class="card-title">{{pokemon.name}}</h4>
+      <p class="card-text">{{pokemon.descrip}}</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><i class="fa fa-wpexplorer fa-fw" aria-hidden="true"></i>&nbsp;Categoria: {{pokemon.categoria }}</li>
+        <li class="list-group-item"><i class="fa fa-stop-circle-o fa-fw" aria-hidden="true"></i>&nbsp;Tipo: {{pokemon.tipo| uppercase}}</li>
+        <li class="list-group-item"><i class="fa fa-bars fa-fw" aria-hidden="true"></i>&nbsp;Debiliades:<br>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let de of pokemon.debilidad">{{de}}</li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+    <div class="card-block">
+      <a [routerLink]="['/pokemones']" class="card-link btn btn-outline-secondary ">Volver</a>
+    </div>
+  </div>
+</div>

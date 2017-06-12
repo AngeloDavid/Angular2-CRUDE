@@ -5,5 +5,6 @@ export interface Pokem {
   categoria:string,
   tipo:string,
   img:string ,
-  debilidad:string []
+  debilidad:string [],
+  key?:string
 }

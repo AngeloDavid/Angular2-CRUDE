@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+.navbar-brand img{
+  width: 45px;
+}
+.img-home{
+  width: 70%;
+  height: 70%;
+
+}
+.title{
+  padding-top:20px ;
+  padding-bottom:20px ;
+}

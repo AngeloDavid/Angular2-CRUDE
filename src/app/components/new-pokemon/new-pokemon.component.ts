@@ -9,7 +9,7 @@ import {PokeServicesService} from "../../services/poke-services.service";
 })
 export class NewPokemonComponent implements OnInit {
 
-
+  private FormSubmit:boolean=false;
   private  _pokemon:Pokem= {
     idnumber:null,
     name:null,
@@ -33,6 +33,7 @@ export class NewPokemonComponent implements OnInit {
     this.pss.newPoken(this._pokemon).subscribe(
       data=>{
         console.log(data);
+        this.FormSubmit=true;
       },
       error=>{
         console.log(error);

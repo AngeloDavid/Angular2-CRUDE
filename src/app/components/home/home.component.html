@@ -1,3 +1,36 @@
-<p>
-  home works!
-</p>
+<div class="row">
+  <div class="jumbotron">
+    <div class="container" >
+    <div class="row" >
+      <div class="col-6">
+        <div class="container" >
+          <div class="row justify-content-center" >
+          <h1 class="display-3">PokenInfo</h1>
+          <p class="lead">Encontrará información sobre varios pokemones  y podra particiar en nuestra comunidad con sus aportaciones</p>
+
+          <p class="lead" >Creado Por: Angelo Flores<br>
+            Sexto Semestre<br>
+            Tecnología en Análisis en sistemas informáticos<br>
+            ESFOT-EPN<br>
+          </p>
+
+            <p class="lead">
+              <a  [routerLink]="['/pokemones']" class="btn btn-outline-primary" role="button">Mirar Pokemones</a>
+              <a  [routerLink]="['/new']" class="btn  btn-outline-info" role="button"><i class="fa fa-plus-circle fa-fw" aria-hidden="true"></i>&nbsp;Aportar </a>
+            </p>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="container" >
+          <div class="row justify-content-center" >
+          <img [src]="['assets/pokemon-go.png']" class="img-home">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

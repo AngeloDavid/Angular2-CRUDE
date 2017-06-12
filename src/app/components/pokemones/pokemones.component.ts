@@ -8,7 +8,7 @@ import {Pokem} from "../../interfaces/pokem";
 })
 export class PokemonesComponent implements OnInit {
 
-  public  jsonp:Pokem[];
+  public  pokemones:Pokem[];
   public arrayOfKeys;
 
   constructor( private pss:PokeServicesService ) {
@@ -16,14 +16,14 @@ export class PokemonesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pss.getPk().subscribe(resp=>{this.jsonp=<Pokem[]>resp;
-        this.arrayOfKeys = Object.keys(this.jsonp);
-        console.log(this.jsonp);
-        console.log(this.arrayOfKeys)
+    this.pss.getPk().subscribe(resp=>{this.pokemones=<Pokem[]>resp;
+        this.arrayOfKeys = Object.keys(this.pokemones);
+        /*console.log(this.pokemones);
+        console.log(this.arrayOfKeys)*/
       },
       error => console.error('Error: ' + error),
       () => console.log('Completed!'));
-
+    //console.log(this.pss.pokesList);
   }
 
 }

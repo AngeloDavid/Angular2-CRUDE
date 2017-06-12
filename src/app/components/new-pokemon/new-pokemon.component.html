@@ -2,31 +2,54 @@
 <form  (ngSubmit) ="guardar(newP)" #newP="ngForm">
   <div class="row">
     <div class="col-6">
-      <div class="form-group">
-        <label for="numPoken">Nombre</label>
-        <input type="number" class="form-control" id="numPoken" name="numPoken" #numPoken="ngModel"
+      <div class="form-group" [ngClass]="{'has-danger': (numPoken.errors?.required) }">
+        <label for="numPoken"># Pokemon</label>
+        <input type="number" class="form-control" id="numPoken" name="numPoken"
+               required
+               name="apellido"
+               #numPoken="ngModel"
                [(ngModel)]="_pokemon.idnumber" aria-describedby="emailHelp" placeholder="">
+      </div>
+      <div class="form-control-feedback" *ngIf="numPoken.errors?.required" >
+        Este campo es obligatorio
       </div>
     </div>
     <div class="col-6">
-      <div class="form-group">
+      <div class="form-group"  [ngClass]="{'has-danger': (nombre.errors?.required||nombre.errors?.minlength)}">
         <label for="nombre">Nombre</label>
         <input type="text" class="form-control" id="nombre" name="nombre" #nombre="ngModel"
+               required
+               minlength="5"
                [(ngModel)]="_pokemon.name" aria-describedby="emailHelp" placeholder="">
+      </div>
+      <div class="form-control-feedback" *ngIf="nombre.errors?.required" >
+        Este campo es obligatorio
+      </div>
+      <div class="form-control-feedback" *ngIf="nombre.errors?.minlength " >
+        El tamaño minimo es de 5
       </div>
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" [ngClass]="{'has-danger': (descripcion.errors?.required||descripcion.errors?.minlength)}">
     <label for="descripcion">Descripcion</label>
     <textarea class="form-control" id="descripcion" name="descripcion" #descripcion="ngModel"
+              required
+              minlength="20"
               [(ngModel)]="_pokemon.descrip" rows="3"></textarea>
+    <div class="form-control-feedback" *ngIf="descripcion.errors?.required" >
+      Este campo es obligatorio
+    </div>
+    <div class="form-control-feedback" *ngIf="descripcion.errors?.minlength " >
+      El tamaño minimo es de 20
+    </div>
   </div>
   <div class="row">
     <div class="col-6">
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{'has-danger': (categoria.errors?.required) }">
         <label for="categoria">Categoria</label>
         <select class="form-control" id="categoria" name="categoria" #categoria="ngModel"
+                required
                 [(ngModel)]="_pokemon.categoria" >
           <option>Semilla</option>
           <option>Lagartilla</option>
@@ -34,23 +57,29 @@
           <option>Tortugita</option>
           <option>Llamas</option>
         </select>
+        <div class="form-control-feedback" *ngIf="categoria.errors?.required" >
+          Este campo es obligatorio
+        </div>
       </div>
     </div>
     <div class="col-6">
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{'has-danger': (tipo.errors?.required) }">
         <label for="tipo">Tipo</label>
         <select class="form-control" id="tipo" name="tipo" #tipo="ngModel"
+                required
                 [(ngModel)]="_pokemon.tipo">
           <option>Fuego</option>
           <option>Planta</option>
           <option>Agua</option>
-
           <option>Tierra</option>
         </select>
+        <div class="form-control-feedback" *ngIf="tipo.errors?.required" >
+          Este campo es obligatorio
+        </div>
       </div>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group" >
     <label for="debilidad">Debilidad</label>
     <select multiple class="form-control" id="debilidad" name="debilidad" #debilidad="ngModel"
             [(ngModel)]="_pokemon.debilidad">
@@ -64,10 +93,14 @@
 
   <div class="form-group">
     <label for="imagen">URL-imagen</label>
-    <input type="email" class="form-control" id="imagen" name="imagen" #imagen="ngModel"
+    <input type="url" class="form-control" id="imagen" name="imagen" #imagen="ngModel"
            [(ngModel)]="_pokemon.img" aria-describedby="emailHelp" placeholder="">
   </div>
 
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!newP.valid || FormSubmit">Nuevo Pokemon</button>
+
 </form>
+<div class="alert alert-success" role="alert" *ngIf="FormSubmit">
+  <strong>Muy Bien!</strong> Datos Ingresados correctamente.
+</div>

@@ -1,37 +1,29 @@
 <div class="row justify-content-center">
-  <h1>Productos</h1>
+  <h1 class="title">Pokemones</h1>
 </div>
 <div class="row  justify-content-center">
 
   <div class="col-6 " *ngFor="let key of arrayOfKeys">
     <div class="card justify-content-center" >
-      <img class="card-img-top" [src]="'assets/'+jsonp[key].img" [alt]="jsonp[key].name">
+      <img class="card-img-top" [src]="pokemones[key].img" [alt]="pokemones[key].name">
       <div class="card-block">
-        <h4 class="card-title">{{jsonp[key].name}} <span class="badge badge-info" >N°{{jsonp[key].idnumber}}</span></h4>
-        <p class="card-text">{{jsonp[key].descrip| slice:0:200}} ...</p>
+        <h4 class="card-title">{{pokemones[key].name}} <span class="badge badge-info" >N°{{pokemones[key].idnumber}}</span></h4>
+        <p class="card-text">{{pokemones[key].descrip| slice:0:200}} ...</p>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><i class="fa fa-wpexplorer fa-fw" aria-hidden="true"></i>&nbsp;Categoria: {{jsonp[key].categoria }}</li>
-          <li class="list-group-item"><i class="fa fa-stop-circle-o fa-fw" aria-hidden="true"></i>&nbsp;Tipo: {{jsonp[key].tipo| uppercase}}</li>
+          <li class="list-group-item"><i class="fa fa-wpexplorer fa-fw" aria-hidden="true"></i>&nbsp;Categoria: {{pokemones[key].categoria }}</li>
+          <li class="list-group-item"><i class="fa fa-stop-circle-o fa-fw" aria-hidden="true"></i>&nbsp;Tipo: {{pokemones[key].tipo| uppercase}}</li>
           <li class="list-group-item"><i class="fa fa-bars fa-fw" aria-hidden="true"></i>&nbsp;Debiliades:<br>
             <ul class="list-group">
-               <li class="list-group-item" *ngFor="let de of jsonp[key].debilidad">{{de}}</li>
+               <li class="list-group-item" *ngFor="let de of pokemones[key].debilidad">{{de}}</li>
             </ul>
           </li>
 
 
         </ul>
         <div class="card-block">
-          <a  class="btn btn-outline-primary">ver mas</a>
+          <a  [routerLink]="['/producto',key]" class="btn btn-outline-primary">ver mas</a>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
-<ul>
-  <li >
-    <span class="badge">{{key}}</span>
-  </li>
-</ul>

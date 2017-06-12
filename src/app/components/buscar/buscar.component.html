@@ -1,3 +1,29 @@
-<p>
-  buscar works!
-</p>
+<div *ngIf="pokemones!=null">
+  <div class="row  justify-content-center">
+
+    <div class="col-6 " *ngFor="let poke of pokemones">
+      <div class="card justify-content-center" >
+        <img class="card-img-top" [src]="poke.img" [alt]="poke.name">
+        <div class="card-block">
+          <h4 class="card-title">{{poke.name}} <span class="badge badge-info" >N°{{poke.idnumber}}</span></h4>
+          <p class="card-text">{{poke.descrip| slice:0:200}} ...</p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="fa fa-wpexplorer fa-fw" aria-hidden="true"></i>&nbsp;Categoria: {{poke.categoria }}</li>
+            <li class="list-group-item"><i class="fa fa-stop-circle-o fa-fw" aria-hidden="true"></i>&nbsp;Tipo: {{poke.tipo| uppercase}}</li>
+            <li class="list-group-item"><i class="fa fa-bars fa-fw" aria-hidden="true"></i>&nbsp;Debiliades:<br>
+              <ul class="list-group">
+                <li class="list-group-item" *ngFor="let de of poke.debilidad">{{de}}</li>
+              </ul>
+            </li>
+
+
+          </ul>
+          <div class="card-block">
+            <a  [routerLink]="['/producto',poke.key]" class="btn btn-outline-primary">ver mas</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="pokemones==null"> no hay pokemones</div>
